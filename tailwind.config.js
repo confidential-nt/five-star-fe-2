@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        naver: "#20c801",
+        kakao: "#f5e904",
+      },
+    },
   },
   plugins: [],
 };
