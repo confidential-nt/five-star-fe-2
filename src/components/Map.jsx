@@ -13,10 +13,12 @@ export default function Map() {
   }, []);
 
   return (
-    <div
-      id="map"
-      style={{ width: "80vh", height: "80vh" }}
-      /* className="w-80vw h-80vh mx-auto my-8 rounded-lg shadow-lg" */
-    ></div>
+    <div className="flex justify-center relative">
+      <div
+        id="map"
+        style={{ width: "80vh", height: "80vh" }}
+        className="absolute top-10 w-full h-full rounded-lg shadow-lg"
+      ></div>
+    </div>
   );
 }
