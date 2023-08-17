@@ -7,6 +7,7 @@ export default function Map() {
     const container = document.getElementById("map");
     const options = {
       center: new kakao.maps.LatLng(36.34, 127.77),
+      draggable: false,
       level: 13,
     };
     const map = new kakao.maps.Map(container, options);
