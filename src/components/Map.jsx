@@ -17,14 +17,12 @@ export default function Map() {
   }, []);
 
   return (
-    <div className="flex justify-center relative">
+    <div className="relative h-full w-full">
       <div
         id="map"
-        style={{ width: "80vh", height: "80vh" }}
-        className="absolute top-10 w-full h-full rounded-lg shadow-lg"
-      >
-        {map && <MapMarker map={map} />}
-      </div>
+        className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  rounded-lg shadow-lg h-screen-4/5 w-full md:w-screen-4/5 lg:w-screen-2/5"
+      ></div>
+      {map && <MapMarker map={map} />}
     </div>
   );
 }
