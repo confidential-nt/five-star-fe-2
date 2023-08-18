@@ -1,5 +1,10 @@
 import React from "react";
+import Map from "../components/Map";
 
 export default function Main() {
-  return <div>여기는 메인페이지</div>;
+  return (
+    <div>
+      <Map />
+    </div>
+  );
 }

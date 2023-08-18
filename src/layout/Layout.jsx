@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 export default function Layout() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full">
       <Navbar />
       <Outlet />
     </div>
