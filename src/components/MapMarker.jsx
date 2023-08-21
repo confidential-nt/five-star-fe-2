@@ -1,47 +1,62 @@
-import { useEffect } from 'react'
-import markerImageBlue from '../img/Lovepik_com-401342747-map-location-icon.png';
-import cities from '../data/cities';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import normalMarker from "../img/normal_marker.png";
 
-function MapMarker({ map }) {
-    useEffect(() => {
-        
-        const markerBlueUrl = markerImageBlue;
-        const markerBlueSize = new window.kakao.maps.Size(40, 40);
-        const markerImage = new window.kakao.maps.MarkerImage(markerBlueUrl, markerBlueSize);
+const { kakao } = window;
 
-        cities.forEach(city => {
-            const bounceAmount = 0.02;
-            const position = new window.kakao.maps.LatLng(city.lat, city.lng);
-            const raisedPosition = new window.kakao.maps.LatLng(city.lat + bounceAmount, city.lng);
+function MapMarker({ map, city, overlayDisplay }) {
+  const navigate = useNavigate();
 
-            const marker = new window.kakao.maps.Marker({
-                position: position,
-                image: markerImage,
-            });
-            marker.setMap(map);
-            
-            const overlayContent = `<div class="text-red-400 font-bold">
-            ${city.name}(으)로 GO!</div>`;
-            const customOverlay = new window.kakao.maps.CustomOverlay({
-                position: position,
-                content: overlayContent,
-                aAnchor: 1.5
-            });
+  useEffect(() => {
+    const markerBlueUrl = normalMarker;
+    const markerBlueSize = new kakao.maps.Size(40, 40);
+    const markerImage = new kakao.maps.MarkerImage(
+      markerBlueUrl,
+      markerBlueSize
+    );
 
+    const position = new kakao.maps.LatLng(city.lat, city.lng);
 
-            window.kakao.maps.event.addListener(marker, 'mouseover', function() {
-                marker.setPosition(raisedPosition);
-                customOverlay.setMap(map);
-            });
-
-            window.kakao.maps.event.addListener(marker, 'mouseout', function() {
-                marker.setPosition(position);
-                customOverlay.setMap(null);
-        });
+    const marker = new kakao.maps.Marker({
+      position: position,
+      image: markerImage,
     });
-    }, [map]);
+    marker.setMap(map);
 
-    return null;
+    if (overlayDisplay) {
+      const bounceAmount = 0.02;
+      const raisedPosition = new kakao.maps.LatLng(
+        city.lat + bounceAmount,
+        city.lng
+      );
+
+      const overlayContent = `<div class="text-red-400 font-bold">
+              ${city.name}(으)로 GO!</div>`;
+      const customOverlay = new kakao.maps.CustomOverlay({
+        position: position,
+        content: overlayContent,
+        aAnchor: 1.5,
+      });
+
+      kakao.maps.event.addListener(marker, "mouseover", function () {
+        marker.setPosition(raisedPosition);
+        customOverlay.setMap(map);
+      });
+
+      kakao.maps.event.addListener(marker, "mouseout", function () {
+        marker.setPosition(position);
+        customOverlay.setMap(null);
+      });
+    }
+
+    kakao.maps.event.addListener(marker, "click", function () {
+      navigate("/plans/new", {
+        state: city,
+      });
+    });
+  }, [map, city, overlayDisplay, navigate]);
+
+  return null;
 }
 
-export default MapMarker
+export default MapMarker;
