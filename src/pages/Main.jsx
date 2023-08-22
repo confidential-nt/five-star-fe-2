@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Map from "../components/Map";
-import axios from "axios";
 import { getCities } from "../utils/cities";
 
 export default function Main() {
