@@ -16,7 +16,7 @@ export default function Map({
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
-      center: new kakao.maps.LatLng(coordinates.lat, coordinates.lng), //36.34, 127.77
+      center: new kakao.maps.LatLng(coordinates.lat, coordinates.lng),
       level,
     };
     const newMap = new kakao.maps.Map(container, options);
