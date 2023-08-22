@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Map from "../components/Map";
 import axios from "axios";
+import { getCities } from "../utils/cities";
 
 export default function Main() {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    axios.get("/data/cities.json").then((res) => setCities(res.data.cities));
+    getCities().then(setCities);
   }, []);
 
   return (
