@@ -10,14 +10,13 @@ export default class PublicDataClient {
         MobileOS: "ETC",
         MobileApp: "KtourPlanner",
         _type: "json",
-        keyword: "서울",
         contentTypeId: 12,
         serviceKey: process.env.REACT_APP_PUBLIC_DATA_SERVICE_KEY,
       },
     });
   }
 
-  async attractions() {
-    return this.#httpClient.get();
+  async attractions(params) {
+    return this.#httpClient.get(params);
   }
 }

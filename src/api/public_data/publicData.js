@@ -4,9 +4,13 @@ export default class PublicData {
     this.#apiClient = apiClient;
   }
 
-  async getAttractions() {
+  async getAttractions(city) {
     return this.#apiClient
-      .attractions()
+      .attractions({
+        params: {
+          keyword: city,
+        },
+      })
       .then((res) => res.data)
       .then(
         ({
