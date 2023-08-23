@@ -24,6 +24,9 @@ export default class PublicData {
             ...i,
             lat: parseFloat(i.mapy),
             lng: parseFloat(i.mapx),
+            title: i.title,
+            img: i.firstimage,
+            address: i.addr1,
           }))
       );
   }

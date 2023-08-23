@@ -10,6 +10,7 @@ export default function Map({
   zoomable,
   cities,
   overlayDisplay,
+  placeInfo,
 }) {
   const [map, setMap] = useState(null);
 
@@ -40,6 +41,7 @@ export default function Map({
             city={city}
             key={idx}
             overlayDisplay={overlayDisplay}
+            placeInfo={placeInfo}
           />
         ))}
     </div>

@@ -5,7 +5,7 @@ import { usePublicDataApi } from "../context/PublicDataApiContext";
 
 export default function NewPlan() {
   const { state: city } = useLocation();
-  const [attractions, setAttractions] = useState();
+  const [attractions, setAttractions] = useState([]);
   const { publicData } = usePublicDataApi();
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function NewPlan() {
             zoomable={false}
             cities={[...attractions]}
             overlayDisplay={false}
+            placeInfo={true}
           />
         )}
       </div>
