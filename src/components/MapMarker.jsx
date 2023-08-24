@@ -28,7 +28,6 @@ function MapMarker({ map }) {
                 aAnchor: 1.5
             });
 
-
             window.kakao.maps.event.addListener(marker, 'mouseover', function() {
                 marker.setPosition(raisedPosition);
                 customOverlay.setMap(map);
