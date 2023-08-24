@@ -22,6 +22,7 @@ export default function Main() {
           zoomable={false}
           cities={cities}
           overlayDisplay={true}
+          placeInfo={false}
         />
       )}
     </div>
