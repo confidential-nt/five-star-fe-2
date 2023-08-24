@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import normalMarker from "../img/normal_marker.png";
 
@@ -6,8 +6,6 @@ const { kakao } = window;
 
 function MapMarker({ map, city, overlayDisplay, placeInfo }) {
   const navigate = useNavigate();
-  const mapRef = useRef(null);
-  const [marker, setMarker] = useState(null);
 
   useEffect(() => {
     const markerBlueUrl = normalMarker;
