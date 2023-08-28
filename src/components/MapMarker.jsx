@@ -59,8 +59,8 @@ function MapMarker({ map, city, overlayDisplay, placeInfo }) {
 
         if (placeInfo) {
             const placeInfoContent =
-                `<div class="bg-white rounded-lg shadow-md p-4">` +
-                `<div class="relative w-full h-48 mb-2 overflow-hidden">` +
+                `<div class="relative bg-white rounded-lg shadow-md p-4 transform -translate-y-2/3">` +
+                `<div class="w-full h-48 mb-2 overflow-hidden">` +
                 `<img src=${city.img} class="w-full h-2/3 object-cover rounded-t-lg mb-2" alt=${city.title}/>` +
                 `<div class="flex-grow">` +
                 `<h1 class="text-lg font-semibold mb-1">${city.title}</h1>` +

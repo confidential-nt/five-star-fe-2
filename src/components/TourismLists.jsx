@@ -57,7 +57,7 @@ const TourismLists = ({ cities }) => {
             <div className="absolute bottom-20 right-1/3 transform translate-x-1/4 w-1/5 h-1/3 p-4 border border-gray-300 rounded-lg overflow-y-scroll bg-gray-100 bg-opacity-75">
                 <h2 className="text-xl font-semibold mb-4 text-center">내 관광지</h2>
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <Droppable droppableId="myCities">
+                    <Droppable droppableId="dragCities">
                         {(provided) => (
                             <ul 
                                 className="list-disc pl-6"
