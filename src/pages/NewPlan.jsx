@@ -32,7 +32,7 @@ export default function NewPlan() {
               placeInfo={true}
             />
             <TourismLists
-            cities={[...attractions]}
+              cities={[...attractions]}
             />
           </>
         )}
