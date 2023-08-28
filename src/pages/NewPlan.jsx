@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Map from "../components/Map";
+import TourismLists from "../components/TourismLists"
 import { usePublicDataApi } from "../context/PublicDataApiContext";
 
 export default function NewPlan() {
@@ -17,18 +18,23 @@ export default function NewPlan() {
     <>
       <div className="w-full h-full">
         {attractions && (
-          <Map
-            coordinates={{
-              lat: city.lat,
-              lng: city.lng,
-            }}
-            level={7}
-            draggable={true}
-            zoomable={false}
+          <>
+            <Map
+              coordinates={{
+                lat: city.lat,
+                lng: city.lng,
+              }}
+              level={7}
+              draggable={true}
+              zoomable={false}
+              cities={[...attractions]}
+              overlayDisplay={false}
+              placeInfo={true}
+            />
+            <TourismLists
             cities={[...attractions]}
-            overlayDisplay={false}
-            placeInfo={true}
-          />
+            />
+          </>
         )}
       </div>
       <div className="flex justify-center items-center">
