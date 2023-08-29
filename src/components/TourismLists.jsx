@@ -14,7 +14,6 @@ const TourismLists = ({ cities }) => {
 
         const updatedRecommendedCities = recommendedCities.filter((recommendedCity) => recommendedCity.title !== city.title);
         setRecommendedCities(updatedRecommendedCities);
-
     }
 
     const deleteInMyCities = (city) => {
@@ -40,16 +39,13 @@ const TourismLists = ({ cities }) => {
             id: city.title
         });
 
-        const {
-            isOver,
-            setNodeRef: droppableRef
-        } = useDroppable({
+        const { setNodeRef: droppableRef } = useDroppable({
             id:city.title
         });
 
         const style = {
             transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
-            zIndex: transform ? 2 : undefined, // optionally, lift the item visually above others when dragging
+            zIndex: transform ? 2 : undefined
         };
 
         return (
