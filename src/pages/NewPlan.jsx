@@ -28,8 +28,6 @@ export default function NewPlan() {
               draggable={true}
               zoomable={false}
               cities={[...attractions]}
-              overlayDisplay={false}
-              placeInfo={true}
             />
             <TourismLists
               cities={[...attractions]}

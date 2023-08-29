@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import normalMarker from "../img/normal_marker.png";
 
 const { kakao } = window;
 
 function MapMarker({ map, city }) {
+    const navigate = useNavigate();
 
     useEffect(() => {
         const markerBlueUrl = normalMarker;
@@ -21,32 +23,37 @@ function MapMarker({ map, city }) {
         });
         marker.setMap(map);
 
-        const placeInfoContent =
-            `<div class="relative bg-white rounded-lg shadow-md p-4 transform -translate-y-2/3">` +
-            `<div class="w-full h-48 mb-2 overflow-hidden">` +
-            `<img src=${city.img} class="w-full h-2/3 object-cover rounded-t-lg mb-2" alt=${city.title}/>` +
-            `<div class="flex-grow">` +
-            `<h1 class="text-lg font-semibold mb-1">${city.title}</h1>` +
-            `<p class="text-gray-600 text-sm">${city.address}</p>` +
-            `</div>` +
-            `</div>` +
-            `</div>`;
+        const bounceAmount = 0.02;
+        const raisedPosition = new kakao.maps.LatLng(
+            city.lat + bounceAmount,
+            city.lng
+        );
 
-        let infoWindow = new kakao.maps.CustomOverlay({
+        const overlayContent = `<div class="text-red-400 font-bold">
+            ${city.name}(으)로 GO!</div>`;
+
+        const customOverlay = new kakao.maps.CustomOverlay({
             position: position,
-            content: placeInfoContent,
+            content: overlayContent,
+            aAnchor: 1.5,
         });
 
         kakao.maps.event.addListener(marker, "mouseover", function () {
-            infoWindow.setMap(map);
+            marker.setPosition(raisedPosition);
+            customOverlay.setMap(map);
         });
 
         kakao.maps.event.addListener(marker, "mouseout", function () {
-            setTimeout(() => {
-                infoWindow.setMap(null);
+            marker.setPosition(position);
+            customOverlay.setMap(null);
+        });
+
+        kakao.maps.event.addListener(marker, "click", function () {
+            navigate("/plans/new", {
+                state: city,
             });
         });
-    }, [map, city]);
+    }, [map, city, navigate]);
 
     return null;
 }
