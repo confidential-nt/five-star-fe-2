@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import normalMarker from "../img/normal_marker.png";
+import TourismLists from "./TourismLists";
 
 const { kakao } = window;
 
 function MapMarker({ map, city, overlayDisplay, placeInfo }) {
     const navigate = useNavigate();
+    const [markerClicked, setMarkerClicked] = useState(false);
 
     useEffect(() => {
         const markerBlueUrl = normalMarker;
@@ -53,6 +55,7 @@ function MapMarker({ map, city, overlayDisplay, placeInfo }) {
                 navigate("/plans/new", {
                     state: city,
                 });
+                
             });
         }
 

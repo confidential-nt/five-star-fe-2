@@ -36,7 +36,7 @@ const TourismLists = ({ cities }) => {
     }
 
     const DraggableCity = ({ city, index }) => {
-        const { attributes, listeners, setNodeRef } = useDraggable({
+        const { attributes, listeners, setNodeRef, transform } = useDraggable({
             id: city.title
         });
 
@@ -47,6 +47,10 @@ const TourismLists = ({ cities }) => {
             id:city.title
         });
 
+        const style = {
+            transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+            zIndex: transform ? 2 : undefined, // optionally, lift the item visually above others when dragging
+        };
 
         return (
             <li
@@ -54,6 +58,7 @@ const TourismLists = ({ cities }) => {
                     setNodeRef(node);
                     droppableRef(node);
                 }}
+                style={style}
                 className="hover:text-amber-500 list-none"
                 {...attributes}
                 {...listeners}
