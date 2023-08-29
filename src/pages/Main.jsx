@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Map from "../components/Map";
+import MainMap from "../components/MainMap";
 import { getCities } from "../utils/cities";
 
 export default function Main() {
@@ -12,7 +12,7 @@ export default function Main() {
   return (
     <div className="w-full h-full">
       {cities.length && (
-        <Map
+        <MainMap
           coordinates={{
             lat: 36.34,
             lng: 127.77,
@@ -21,8 +21,6 @@ export default function Main() {
           draggable={false}
           zoomable={false}
           cities={cities}
-          overlayDisplay={true}
-          placeInfo={false}
         />
       )}
     </div>
