@@ -9,7 +9,6 @@ export default function Map({
   draggable,
   zoomable,
   cities,
-  placeInfo,
 }) {
   const [map, setMap] = useState(null);
 
