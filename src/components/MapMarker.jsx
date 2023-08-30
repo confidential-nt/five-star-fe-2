@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import normalMarker from "../img/normal_marker.png";
+import blueMarker from "../img/normal_marker.png";
 
 const { kakao } = window;
 
 function MapMarker({ map, city }) {
 
     useEffect(() => {
-        const markerBlueUrl = normalMarker;
+        const markerBlueUrl = blueMarker;
         const markerBlueSize = new kakao.maps.Size(40, 40);
         const markerImage = new kakao.maps.MarkerImage(
             markerBlueUrl,
@@ -35,6 +35,7 @@ function MapMarker({ map, city }) {
         let infoWindow = new kakao.maps.CustomOverlay({
             position: position,
             content: placeInfoContent,
+            zIndex: 1
         });
 
         kakao.maps.event.addListener(marker, "mouseover", function () {
@@ -46,6 +47,7 @@ function MapMarker({ map, city }) {
                 infoWindow.setMap(null);
             });
         });
+
     }, [map, city]);
 
     return null;
