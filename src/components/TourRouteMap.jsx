@@ -4,8 +4,6 @@ import yellowMarker from "../img/selected_marker.png";
 const { kakao } = window;
 
 const Map = ({ level, draggable, zoomable, selectedAttractions }) => {
-  const [map, setMap] = useState(null);
-
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
@@ -18,7 +16,6 @@ const Map = ({ level, draggable, zoomable, selectedAttractions }) => {
     const newMap = new kakao.maps.Map(container, options);
     newMap.setDraggable(draggable);
     newMap.setZoomable(zoomable);
-    setMap(newMap);
 
     const markerYellowUrl = yellowMarker;
     const markerYellowSize = new kakao.maps.Size(40, 40);
@@ -27,13 +24,28 @@ const Map = ({ level, draggable, zoomable, selectedAttractions }) => {
       markerYellowSize
     );
 
-    selectedAttractions.map((attraction, idx) => {
+    selectedAttractions.forEach((attraction) => {
       const markers = new kakao.maps.Marker({
         map: newMap,
         position: new kakao.maps.LatLng(attraction.lat, attraction.lng),
         image: markerImage,
         title: attraction.title,
       });
+    });
+
+    const polylinePath = selectedAttractions.map(
+      (attraction) => new kakao.maps.LatLng(attraction.lat, attraction.lng)
+    );
+
+    selectedAttractions.map((attraction) => {
+      const polyline = new kakao.maps.Polyline({
+        path: polylinePath,
+        strokeWeight: 2,
+        strokeColor: "#EF5350",
+        strokeOpacity: 0.5,
+        strokeStyle: "solid",
+      });
+      polyline.setMap(newMap);
     });
   }, [level, draggable, zoomable, selectedAttractions]);
 

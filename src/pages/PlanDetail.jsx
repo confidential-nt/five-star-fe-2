@@ -21,7 +21,7 @@ export default function PlanDetail() {
   return (
     <div className="w-full h-full">
       <TourRouteMap
-        level={7}
+        level={9}
         draggable={true}
         zoomable={false}
         selectedAttractions={selectedAttractions}
