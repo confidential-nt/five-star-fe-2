@@ -4,7 +4,6 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Login() {
-  console.log();
   return (
     <section className="w-full h-full max-w-6xl flex justify-center items-center">
       <h2 className="hidden">로그인페이지</h2>
