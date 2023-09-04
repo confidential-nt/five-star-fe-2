@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import yellowMarker from "../img/selected_marker.png";
 
 const { kakao } = window;
@@ -50,7 +50,7 @@ const Map = ({ level, draggable, zoomable, selectedAttractions }) => {
   }, [level, draggable, zoomable, selectedAttractions]);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full lg:basis-2/3">
       <div
         id="map"
         className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  rounded-lg shadow-lg h-screen-4/5 w-full md:w-screen-4/5 lg:w-screen-2/5"
